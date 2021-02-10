@@ -9,34 +9,33 @@ class Provincia {
         //Implementamos un método para insertar registros
 	public function insertar($cod_pro,$nom_pro)
 	{
-		$sql="INSERT INTO tbl_provincia (cod_pro,nom_pro,est_pro)
-		VALUES ('$cod_pro','$nom_pro','A')";
+		$sql ="CALL sp_InsertarProvincia($cod_pro,'$nom_pro')";
 		return ejecutarConsulta($sql);
 	}
         //Implementamos un método para editar registros
 	public function editar($id_pro,$cod_pro,$nom_pro)
 	{
-		$sql="UPDATE tbl_provincia SET cod_pro='$cod_pro', nom_pro='$nom_pro' WHERE id_pro='$id_pro'";
+		 $sql="CALL sp_EditarProvincia($id_pro,$cod_pro,'$nom_pro')";
 		return ejecutarConsulta($sql);
 	}
         //Implementamos un método para desactivar provincias
 	public function desactivar($id_pro)
 	{
-		$sql="UPDATE tbl_provincia SET est_pro='I' WHERE id_pro='$id_pro'";
+		$sql ="CALL sp_DesactivarProvincia($id_pro)";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para activar categorías
 	public function activar($id_pro)
 	{
-		$sql="UPDATE tbl_provincia SET est_pro='A' WHERE id_pro='$id_pro'";
+		$sql ="CALL sp_ActivarProvincia($id_pro)";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementar un método para mostrar los datos de un registro a modificar
 	public function mostrar($id_pro)
 	{
-		$sql="SELECT * FROM tbl_provincia WHERE id_pro='$id_pro'";
+		$sql= "CALL sp_MostrarProvincia($id_pro)";
 		return ejecutarConsultaSimpleFila($sql);
 	}
 
@@ -48,7 +47,7 @@ class Provincia {
 	}
         
         public function eliminar($id_pro){
-        $sql = "DELETE FROM tbl_provincia WHERE id_pro='$id_pro'";
-        return ejecutarConsulta($sql);
+             $sql = "CALL sp_Eliminarprovincia($id_pro)";
+            return ejecutarConsulta($sql);
     }
 }
