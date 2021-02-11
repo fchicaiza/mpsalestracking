@@ -54,5 +54,10 @@ Class Banco{
         $sql = "CALL sp_EliminarBanco($idbanco)";
         return ejecutarConsulta($sql);
     }
+     public function select()
+	{
+		$sql="SELECT * FROM tbl_banco WHERE est_ban=1";
+		return ejecutarConsulta($sql);		
+	}
 }
 ?>
