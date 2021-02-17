@@ -17,6 +17,7 @@ function limpiar() {
     $("#id_ciu").val("");
     $("#cod_ciu").val("");
     $("#nom_ciu").val("");
+    $("#int_pro_ciu").val("");
 
 }
 
