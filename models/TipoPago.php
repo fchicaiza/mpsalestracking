@@ -53,5 +53,10 @@ Class Tpago{
         $sql = "CALL sp_EliminarTipoPago($idtpago)";
         return ejecutarConsulta($sql);
     }
+     public function select()
+    {
+	$sql="SELECT * FROM tbl_tipo_pago WHERE est_tpa=A";
+	return ejecutarConsulta($sql);		
+    }
 }
 ?>

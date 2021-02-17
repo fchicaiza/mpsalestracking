@@ -54,5 +54,10 @@ Class Pventa{
         $sql = "CALL sp_EliminarPuntoVenta($idpventa)";
         return ejecutarConsulta($sql);
     }
+    public function select()
+    {
+	$sql="SELECT * FROM tbl_punto_venta WHERE est_pdv=A";
+	return ejecutarConsulta($sql);		
+    }
 }
 ?>

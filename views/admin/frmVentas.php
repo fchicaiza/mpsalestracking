@@ -19,10 +19,11 @@ require '../admin/frmHeader.php';
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
+                            <th>Opciones</th>
                             <th>Fecha de envio</th>
                             <th>Total Venta</th>
                             <th>Imagen</th>
-                            <th>Int</th>
+                            <th>Punto de Venta</th>
                             <th>Banco</th>
                             <th>Tipo Pago</th>
                             <th>Ciudad</th>
@@ -33,10 +34,11 @@ require '../admin/frmHeader.php';
                           <tbody>                            
                           </tbody>
                           <tfoot>
+                            <th>Opciones</th>  
                             <th>Fecha de envio</th>
                             <th>Total Venta</th>
                             <th>Imagen</th>
-                            <th>Int</th>
+                            <th>Punto de Venta</th>
                             <th>Banco</th>
                             <th>Tipo Pago</th>
                             <th>Ciudad</th>
@@ -62,28 +64,28 @@ require '../admin/frmHeader.php';
                             <input type="file" class="form-control" name="imagen" id="imagen" maxlength="256">
                           </div> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Int:</label>
-                            <input type="text" class="form-control" name="int_pvn_ven" id="int_pvn_ven" maxlength="256" placeholder="Int">
+                            <label>Punto de Venta:</label>
+                            <select class="form-control selectpicker" name="int_pvn_ven" data-live-search="true" reqired="required" id="int_pvn_ven" maxlength="256"></select>   
                           </div> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Banco:</label>
-                            <select type="text" class="form-control" name="id_ban_ven" id="id_ban_ven" maxlength="256" placeholder="Banco"></select>select
+                            <select id="id_ban" name="id_ban" class="form-control selectpicker" data-live-search="true" reqired="required"  maxlength="256"></select>
                           </div>  
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Tipo Pago:</label>
-                            <select type="text" class="form-control" name="id_tpa_ven" id="id_tpa_ven" maxlength="256" placeholder="Tipo Pago"></select>select
+                            <select class="form-control selectpicker" name="id_tpa_ven" data-live-search="true" reqired="required" id="id_tpa_ven" maxlength="256" ></select>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Ciudad:</label>
-                            <select type="text" class="form-control" name="id_ciu_ven" id="id_ciu_ven" maxlength="256" placeholder="Ciudad"></select>select
+                            <select class="form-control selectpicker" name="id_ciu_ven" data-live-search="true" reqired="required" id="id_ciu_ven" maxlength="256"></select>
                           </div>
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Colaborador:</label>
-                            <select type="text" class="form-control" name="id_col_ven" id="id_col_ven" maxlength="256" placeholder="Colaborador"></select>select
+                            <select class="form-control selectpicker" name="id_col_ven" data-live-search="true" reqired="required" id="id_col_ven" maxlength="256"></select>
                           </div>
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Cliente:</label>
-                            <select type="text" class="form-control" name="id_cli_ven" id="id_cli_ven" maxlength="256" placeholder="Cliente"></select>select
+                            <select class="form-control selectpicker" name="id_cli_ven" data-live-search="true" ireqired="required" d="id_cli_ven" maxlength="256"></select>
                           </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>

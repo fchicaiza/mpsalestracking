@@ -10,9 +10,13 @@ function init(){
     {
             guardaryeditar(e); 
         });
+  $.post("../../ajax/ventas.php?op=selectPuntoVenta", function(r){
+   $("#int_pvn_ven").html(r);   
+   $("#int_pvn_ven").selectpicker('refresh');   
+  })       
   $.post("../../ajax/ventas.php?op=selectBanco", function(r){
-   $("#id_ban_ven").html(r);   
-   $("#id_ban_ven").selectpicker('refresh');   
+   $("#id_ban").html(r);   
+   $("#id_ban").selectpicker('refresh');   
   }) 
   $.post("../../ajax/ventas.php?op=selectTipoPago", function(r){
    $("#id_tpa_ven").html(r);   
@@ -38,7 +42,6 @@ function  limpiar(){
     $("#fec_ven").val(" ");
     $("#tot_ven").val(" ");
      $("#int_pvn_ven").val(" ");
-    $("#id_ban_ven").val("");
     $("#id_tpa_ven").val(" ");
     $("#id_ciu_ven").val(" ");
     $("#id_col_ven").val(" ");
@@ -139,6 +142,7 @@ function mostrar(id_ven){
         $("#tot_ven").val(data.tot_ven);
         $("#int_pvn_ven").val(data.int_pvn_ven);
         $("#id_ban_ven").val(data.id_ban_ven);
+        $("#id_ban_ven").selectpicker('refresh');
         $("#id_tpa_ven").val(data.id_tpa_ven);
         $("#id_ciu_ven").val(data.id_ciu_ven);
         $("#id_col_ven").val(data.id_col_ven);
@@ -146,10 +150,10 @@ function mostrar(id_ven){
     });
     }
 //funcion para desactivar articulo
-function desactivar(idventa){
+function desactivar(id_ven){
     bootbox.confirm("¿Esta seguro de querer desactivar la venta?", function(result){
         if (result){
-            $.post("../../ajax/ventas.php?op=desactivar",{idventa:idventa}, function(e){
+            $.post("../../ajax/ventas.php?op=desactivar",{id_ven:id_ven}, function(e){
             bootbox.alert(e);
             tabla.ajax.reload();
             });
@@ -157,10 +161,10 @@ function desactivar(idventa){
     });
 }
 //funcion para activar articulo
-function activar(idventa){
+function activar(id_ven){
     bootbox.confirm("¿Esta seguro de querer activar la venta?", function(result){
         if (result){
-            $.post("../../ajax/ventas.php?op=activar",{idventa:idventa}, function(e){
+            $.post("../../ajax/ventas.php?op=activar",{id_ven:id_ven}, function(e){
             bootbox.alert(e);
             tabla.ajax.reload();
             });

@@ -17,10 +17,10 @@ function init() {
 function limpiar() {
 
     $("#des_cap").val("");
-     $("#nom_cap").val("");
-      $("#enl_cap").val("");
-       $("#mat_cap").val("");
-        $("#fec_cap").val("");
+    $("#nom_cap").val("");
+    $("#enl_cap").val("");
+    $("#mat_cap").val("");
+    $("#fec_cap").val("");
     $("#id_cap").val("");
 }
 

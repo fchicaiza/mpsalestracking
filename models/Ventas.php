@@ -26,14 +26,14 @@ class Ventas{
 	//Implementamos un método para desactivar ventas
 	public function desactivar($id_ven)
 	{
-		$sql="UPDATE tbl_venta SET condicion='I' WHERE id_ven='$id_ven'";
+		$sql="UPDATE tbl_venta SET est_ven='I' WHERE id_ven='$id_ven'";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para activar ventas
 	public function activar($id_ven)
 	{
-		$sql="UPDATE tbl_venta SET condicion='A' WHERE id_ven='$id_ven'";
+		$sql="UPDATE tbl_venta SET est_ven='A' WHERE id_ven='$id_ven'";
 		return ejecutarConsulta($sql);
 	}
 
@@ -47,8 +47,9 @@ class Ventas{
 	//Implementar un método para listar los registros de ventas
 	public function listar()
 	{
-		$sql="SELECT v.id_ven,v.fec_env_ven,v.tot_ven,v.img_ven,v.int_pvn_ven,id_ban_ven,id_tpa_ven,id_ciu_ven,id_col_ven,id_cli_ven,v.est_ven 
+		$sql="SELECT v.id_ven,v.fec_env_ven,v.tot_ven,v.img_ven,v.int_pvn_ven,nom_pdv as puntoventa,id_ban_ven,nom_ban as banco,id_tpa_ven,des_tpa as tipopago,id_ciu_ven,nom_ciu as ciudad,id_col_ven,usu_col as colaborador,id_cli_ven,v.est_ven 
 FROM tbl_venta v 
+INNER JOIN tbl_punto_venta pv on v.int_pvn_ven=pv.id_pdv
 INNER JOIN tbl_banco banco on v.id_ban_ven=banco.id_ban
 INNER JOIN tbl_tipo_pago tipopago on v.id_tpa_ven=tipopago.id_tpa
 INNER JOIN tbl_ciudad ciudad on v.id_ciu_ven=ciudad.id_ciu

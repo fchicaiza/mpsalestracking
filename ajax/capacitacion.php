@@ -57,11 +57,11 @@ switch ($_GET["op"]){
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>($reg->est_cap=="A")?'<button class="btn btn-primary" onclick="mostrar('.$reg->id_cap.')"><i class="fa fa-pencil" title="Editar"></i></button>'.
- 					' <button class="btn btn-success" onclick="desactivar('.$reg->id_cap.')"><i class="fa fa-toggle-on" title="Desactivar"></i></button>'.
-                                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->id_cap.')"><i class="fa fa-close" title="Eliminar"></i></button>':
+ 					'<button class="btn btn-success" onclick="desactivar('.$reg->id_cap.')"><i class="fa fa-toggle-on" title="Desactivar"></i></button>'.
+                                        '<button class="btn btn-danger" onclick="eliminar('.$reg->id_cap.')"><i class="fa fa-close" title="Eliminar"></i></button>':
  					'<button class="btn btn-primary" onclick="mostrar('.$reg->id_cap.')"><i class="fa fa-pencil" title="Editar"></i></button>'.
- 					' <button class="btn btn-warning" onclick="activar('.$reg->id_cap.')"><i class="fa fa-toggle-off" title="Activar"></i></button>'.
-                                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->id_cap.')"><i class="fa fa-close" title="Eliminar"></i></button>',
+ 					'<button class="btn btn-warning" onclick="activar('.$reg->id_cap.')"><i class="fa fa-toggle-off" title="Activar"></i></button>'.
+                                        '<button class="btn btn-danger" onclick="eliminar('.$reg->id_cap.')"><i class="fa fa-close" title="Eliminar"></i></button>',
                                     "1"=>$reg->des_cap,
                                     "2"=>$reg->nom_cap,
                                     "3"=>$reg->enl_cap,
