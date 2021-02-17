@@ -15,28 +15,28 @@ class Empresa {
     }
     //mérodo para editar un banco
     
-    public function editar ($idemp,$ruc,$nombre, $direccion, $telefono){
-        $sql="CALL sp_EditarEmpresa($idemp,'$ruc','$nombre', $direccion', '$telefono')";
+    public function editar ($idempresa,$ruc,$nombre, $direccion, $telefono){
+        $sql="CALL sp_EditarEmpresa($idempresa,'$ruc','$nombre', $direccion', '$telefono')";
         
         return ejecutarConsulta($sql);
     }
     // método para cambiar de estado el banco
     
-    public function desactivar($idemp){
-        $sql ="CALL sp_DesEstadoEmpresa($idemp)";
+    public function desactivar($idempresa){
+        $sql ="CALL sp_DesEstadoEmpresa($idempresa)";
         return ejecutarConsulta($sql);
     }
     
     //implmementa método para acticar estado 
-    public function activar($idemp){
-        $sql="CALL sp_ActEstadoEmpresa($idemp)";
+    public function activar($idempresa){
+        $sql="CALL sp_ActEstadoEmpresa($idempresa)";
         return ejecutarConsulta($sql);
     }
     
     // implemetar  método para mostrar roles que se va a editar
     
-    public function mostrar($idemp){
-        $sql= "CALL sp_MostrarEmpresa($idemp)";
+    public function mostrar($idempresa){
+        $sql= "CALL sp_MostrarEmpresa($idempresa)";
         
         return ejecutarConsultaSimpleFila($sql);
     }
@@ -44,13 +44,21 @@ class Empresa {
     // implemetar metodo para listar roles
     
     public function listar(){
-        $sql = "CALL sp_ListarEmpresa";
+        $sql = "CALL sp_ListarEmpresa()";
         return ejecutarConsulta($sql);
     }
     
-    public function eliminar($idemp){
-        $sql = "CALL sp_EliminarEmpresa($idemp)";
+    public function eliminar($idempresa){
+        $sql = "CALL sp_EliminarEmpresa($idempresa)";
         return ejecutarConsulta($sql);
     }
+    
+    //funcion para llemar combobox de empresas
+    public function selecEmpresa()
+    {
+        $sql="CALL sp_SelecEmpresa()";
+        return ejecutarConsulta($sql);
+    }
+    
 }
 ?>

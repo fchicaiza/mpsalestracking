@@ -57,5 +57,12 @@ Class Rol{
         $sql="CALL sp_EliminarRol($idrol)";
         return ejecutarConsulta($sql);
     }
+    
+    // funcion para llenar select Option Combobox
+     public function selecRol()
+    {
+        $sql="CALL sp_SelecRol()";
+        return ejecutarConsulta($sql);
+    }
 }
 ?> 
