@@ -1,7 +1,7 @@
 <?php 
 require_once "../models/Ventas.php";
 $ventas=new Ventas();
-$id_ven=isset($_POST["id_ven"])? limpiarCadena($_POST["id_ven"]):"";
+$idven=isset($_POST["id_ven"])? limpiarCadena($_POST["id_ven"]):"";
 $fec_env_ven=isset($_POST["fec_env_ven"])? limpiarCadena($_POST["fec_env_ven"]):"";
 $tot_ven=isset($_POST["tot_ven"])? limpiarCadena($_POST["tot_ven"]):"";
 $img_ven=isset($_POST["img_ven"])? limpiarCadena($_POST["img_ven"]):"";
@@ -27,7 +27,7 @@ switch ($_GET["op"]){
             move_upload_file($_FILES["imagen"]["tmp_name"],"../files/ventas".$img_ven);
         }
         }
-		if (empty($id_ven)){
+		if (empty($idven)){
 			$rspta=$ventas->insertar($idcategoria,$codigo,$nombre,$stock,$descripcion,$imagene);
 			echo $rspta ? "Venta registrada" : "Venta no se pudo registrar";
 		}
@@ -38,19 +38,19 @@ switch ($_GET["op"]){
 	break;
 
 	case 'desactivar':
-		$rspta=$ventas->desactivar($id_ven);
+		$rspta=$ventas->desactivar($idven);
  		echo $rspta ? "Venta Desactivada" : "Venta no se pudo desactivar";
  		
 	break;
 
 	case 'activar':
-		$rspta=$ventas->activar($id_ven);
+		$rspta=$ventas->activar($idven);
  		echo $rspta ? "Venta  activado" : "Venta no se pudo activar";
  		
 	break;
 
 	case 'mostrar':
-		$rspta=$ventas->mostrar($id_ven);
+		$rspta=$ventas->mostrar($idven);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
  		

@@ -52,6 +52,7 @@ require '../admin/frmHeader.php';
                         <form name="formulario" id="formulario" method="POST">
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Fecha de envio:</label>
+                            <input type="hidden" name="idven" id="idven">
                             <input type="date" class="form-control" step="1" value="<?php echo date("Y-m-d");?>"
                             name="fechav" id="fec_cap" maxlength="256" placeholder="Fecha">
                           </div>                   
@@ -69,7 +70,7 @@ require '../admin/frmHeader.php';
                           </div> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Banco:</label>
-                            <select id="id_ban" name="id_ban" class="form-control selectpicker" data-live-search="true" reqired="required"  maxlength="256"></select>
+                            <select id="idbanco" name="idbanco" class="form-control selectpicker" data-live-search="true" reqired="required"  maxlength="256"></select>
                           </div>  
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Tipo Pago:</label>
