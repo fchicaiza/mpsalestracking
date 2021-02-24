@@ -24,13 +24,13 @@ switch ($_GET["op"]){
 
 	case 'desactivar':
 		$rspta=$ciudad->desactivar($id_ciu);
- 		echo $rspta ? "Ciudad Desactivada" : "Ciudad no se puede desactivar";
+ 		echo $rspta ? "Ciudad Desactivada" : "Ciudad no se puede desactiva";
  		break;
 
 
 	case 'activar':
 		$rspta=$ciudad->activar($id_ciu);
- 		echo $rspta ? "Ciudad activada" : "Ciudad no se puede activar";
+ 		echo $rspta ? "Ciudad activada" : "Ciudad no se puede activa";
  		break;
 	
 
