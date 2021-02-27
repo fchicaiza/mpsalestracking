@@ -1,7 +1,7 @@
 <?php 
 require_once "../models/Ventas.php";
 $ventas=new Ventas();
-$idven=isset($_POST["id_ven"])? limpiarCadena($_POST["id_ven"]):"";
+$id_ven=isset($_POST["id_ven"])? limpiarCadena($_POST["id_ven"]):"";
 $fec_env_ven=isset($_POST["fec_env_ven"])? limpiarCadena($_POST["fec_env_ven"]):"";
 $tot_ven=isset($_POST["tot_ven"])? limpiarCadena($_POST["tot_ven"]):"";
 $img_ven=isset($_POST["img_ven"])? limpiarCadena($_POST["img_ven"]):"";
@@ -16,41 +16,41 @@ $id_cli_ven=isset($_POST["id_cli_ven"])? limpiarCadena($_POST["id_cli_ven"]):"";
 switch ($_GET["op"]){
 
 	case 'guardaryeditar':
-        if(!file_exists($_FILES['imagen']['tmp_name']) || !is_upload_file($_FILES['imagen']['tmp_name']))
+        if(!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
         {
-        $image="";
+        $img_ven=$_POST["imagenactual"];
         }else{
         $ext=explode(".",$_FILES['imagen']['name']);
         if($_FILES['imagen']['type']=="image/jpg" || $_FILES['imagen']['type']=="image/png"||$_FILES['imagen']['type']=="image/jpeg")
         {  
-            $image=round(microtime(true).'.'.end($ext));
-            move_upload_file($_FILES["imagen"]["tmp_name"],"../files/ventas".$img_ven);
+            $img_ven=round(microtime(true).'.'.end($ext));
+            move_uploaded_file($_FILES["imagen"]["tmp_name"],"../files/ventas".$img_ven);
         }
         }
-		if (empty($idven)){
-			$rspta=$ventas->insertar($idcategoria,$codigo,$nombre,$stock,$descripcion,$imagene);
+		if (empty($id_ven)){
+			$rspta=$ventas->insertar($fec_env_ven,$tot_ven,$img_ven,$int_pvn_ven,$id_ban_ven,$id_tpa_ven,$id_ciu_ven,$id_col_ven,$id_cli_ven);
 			echo $rspta ? "Venta registrada" : "Venta no se pudo registrar";
 		}
 		else {
-			$rspta=$ventas->editar($idarticulo,$idcategoria,$codigo,$nombre,$stock,$descripcion,$imagen);
+			$rspta=$ventas->editar($id_ven,$fec_env_ven,$tot_ven,$img_ven,$int_pvn_ven,$id_ban_ven,$id_tpa_ven,$id_ciu_ven,$id_col_ven,$id_cli_ven);
 			echo $rspta ? "Venta actualizada" : "Venta no se pudo actualizar";
 		}
 	break;
 
 	case 'desactivar':
-		$rspta=$ventas->desactivar($idven);
+		$rspta=$ventas->desactivar($id_ven);
  		echo $rspta ? "Venta Desactivada" : "Venta no se pudo desactivar";
  		
 	break;
 
 	case 'activar':
-		$rspta=$ventas->activar($idven);
+		$rspta=$ventas->activar($id_ven);
  		echo $rspta ? "Venta  activado" : "Venta no se pudo activar";
  		
 	break;
 
 	case 'mostrar':
-		$rspta=$ventas->mostrar($idven);
+		$rspta=$ventas->mostrar($id_ven);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
  		
@@ -66,9 +66,12 @@ switch ($_GET["op"]){
         while($reg=$rspta->fetch_object()){
             
             $data[]=array(         
-                    "0" =>($reg->est_ven)?'<button class="btn btn-warning" onclick="mostrar('.$reg->id_ven.')"><i class="fa fa-pencil"></i></button>'.
-                   ' <button class="btn btn-danger" onclick="desactivar('.$reg->id_ven.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg-> id_ven.')"><i class="fa fa-pencil"></i></button>'.
-                   ' <button class="btn btn-success" onclick="activar('.$reg->id_ven.')"><i class="fa fa-power-off"></i></button>',
+                    "0" =>($reg->est_ven=="A")?'<button class="btn btn-primary" onclick="mostrar('.$reg->id_ven.')"><i class="fa fa-pencil" title="Editar"></i></button>'.
+ 					' <button class="btn btn-success" onclick="desactivar('.$reg->id_ven.')"><i class="fa fa-toggle-on" title="Desactivar"></i></button>'.
+                                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->id_ven.')"><i class="fa fa-close" title="Eliminar"></i></button>':
+ 					'<button class="btn btn-primary" onclick="mostrar('.$reg->id_ven.')"><i class="fa fa-pencil" title="Editar"></i></button>'.
+ 					' <button class="btn btn-warning" onclick="activar('.$reg->id_ven.')"><i class="fa fa-toggle-off" title="Activar"></i></button>'.
+                                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->id_ven.')"><i class="fa fa-close" title="Eliminar"></i></button>',
                     "1" =>$reg->fec_env_ven,
                     "2" =>$reg->tot_ven,
                     "3" =>"<img src='../files/ventas".$reg->img_ven."' height='50px' width='50px'>",
@@ -78,7 +81,7 @@ switch ($_GET["op"]){
                     "7" =>$reg->ciudad,
                     "8" =>$reg->colaborador,
                     "9" =>$reg->id_cli_ven,
-                    "10" =>($reg->est_ven)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+                    "10" =>($reg->est_ven=="A")?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
                     
                     );
         }

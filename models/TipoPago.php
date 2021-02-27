@@ -55,7 +55,7 @@ Class Tpago{
     }
      public function select()
     {
-	$sql="SELECT * FROM tbl_tipo_pago WHERE est_tpa=A";
+	$sql="SELECT * FROM tbl_tipo_pago WHERE est_tpa='A'";
 	return ejecutarConsulta($sql);		
     }
 }

@@ -10,17 +10,20 @@ function init() {
     {
         guardaryeditar(e);
     });
+    $("#imagenmuestra").hide();
+    
+    
     $.post("../../ajax/ventas.php?op=selectPuntoVenta", function (r) {
-        $("#int_pvn_ven").html(r);
-        $("#int_pvn_ven").selectpicker('refresh');
+        $("#idpuntoventa").html(r);
+        $("#idpuntoventa").selectpicker('refresh');
     })
     $.post("../../ajax/ventas.php?op=selectBanco", function (r) {
         $("#idbanco").html(r);
         $("#idbanco").selectpicker('refresh');
     })
     $.post("../../ajax/ventas.php?op=selectTipoPago", function (r) {
-        $("#id_tpa_ven").html(r);
-        $("#id_tpa_ven").selectpicker('refresh');
+        $("#idtipopago").html(r);
+        $("#idtipopago").selectpicker('refresh');
     })
     $.post("../../ajax/ventas.php?op=selectCiudad", function (r) {
         $("#id_ciu_ven").html(r);
@@ -40,13 +43,14 @@ function init() {
 
 function  limpiar() {
     $("#fec_ven").val(" ");
-    $("#tot_ven").val(" ");
+    $("#totalventa").val(" ");
     $("#int_pvn_ven").val(" ");
     $("#id_tpa_ven").val(" ");
     $("#id_ciu_ven").val(" ");
     $("#id_col_ven").val(" ");
     $("#id_cli_ven").val(" ");
-
+    $("#imagenmuestra").attr("src","");
+    $("#imagenactual").val("");
 
 
 }
@@ -132,28 +136,33 @@ function guardaryeditar(e)
     limpiar();
 }
 
-function mostrar(idven) {
-    $.post("../../ajax/ventas.php?op=mostrar", {idven: idven}, function (data, status)
+function mostrar(id_ven) {
+    $.post("../../ajax/ventas.php?op=mostrar", {id_ven: id_ven}, function (data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
-        $("#idven").val(data.id_ven);
+        $("#id_ven").val(data.id_ven);
         $("#fec_ven").val(data.fec_env_ven);
-        $("#tot_ven").val(data.tot_ven);
-        $("#int_pvn_ven").val(data.int_pvn_ven);
+        $("#totalventa").val(data.tot_ven);
+        $("#imagenmuestra").show();
+        $("#imagenmuestra").attr("src","../files/ventas/"+data.imagen);
+	$("#imagenactual").val(data.imagen);
+        $("#idpuntoventa").val(data.int_pvn_ven);
+        $("#idpuntoventa").selectpicker('refresh');
         $("#idbanco").val(data.id_ban_ven);
         $("#idbanco").selectpicker('refresh');
-        $("#id_tpa_ven").val(data.id_tpa_ven);
+        $("#idtipopago").val(data.id_tpa_ven);
+        $("#idtipopago").selectpicker('refresh');
         $("#id_ciu_ven").val(data.id_ciu_ven);
         $("#id_col_ven").val(data.id_col_ven);
         $("#id_cli_ven").val(data.id_cli_ven);
     });
 }
 //funcion para desactivar articulo
-function desactivar(idven) {
+function desactivar(id_ven) {
     bootbox.confirm("¿Esta seguro de querer desactivar la venta?", function (result) {
         if (result) {
-            $.post("../../ajax/ventas.php?op=desactivar", {idven: idven}, function (e) {
+            $.post("../../ajax/ventas.php?op=desactivar", {id_ven: id_ven}, function (e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
@@ -161,14 +170,25 @@ function desactivar(idven) {
     });
 }
 //funcion para activar articulo
-function activar(idven) {
+function activar(id_ven) {
     bootbox.confirm("¿Esta seguro de querer activar la venta?", function (result) {
         if (result) {
-            $.post("../../ajax/ventas.php?op=activar", {idven: idven}, function (e) {
+            $.post("../../ajax/ventas.php?op=activar", {id_ven: id_ven}, function (e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
 
+        }
+    });
+}
+function eliminar(id_ven){
+    bootbox.confirm("¿Está seguro que desea eliminar de manera definitiva esta Capacitacion?", function(result){
+     
+        if(result){
+            $.post("../../ajax/capacitacion.php?op=eliminar", {id_ven:id_ven},function(e){
+             bootbox.alert(e);
+             tabla.ajax.reload();
+            });
         }
     });
 }

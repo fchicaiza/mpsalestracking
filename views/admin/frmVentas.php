@@ -58,7 +58,7 @@ require '../admin/frmHeader.php';
                           </div>                   
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Total Venta:</label>
-                            <input type="text" class="form-control" name="tot_ven" id="tot_ven" maxlength="256" placeholder="Total Venta">
+                            <input type="text" class="form-control" name="totalventa" id="totalventa" maxlength="256" placeholder="Total Venta">
                           </div>  
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Imagen:</label>
@@ -66,27 +66,27 @@ require '../admin/frmHeader.php';
                           </div> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Punto de Venta:</label>
-                            <select class="form-control selectpicker" name="int_pvn_ven" data-live-search="true" reqired="required" id="int_pvn_ven" maxlength="256"></select>   
+                            <select  id="idpuntoventa"  name="idpuntoventa" class="form-control selectpicker" data-live-search="true" maxlength="256"></select>   
                           </div> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Banco:</label>
-                            <select id="idbanco" name="idbanco" class="form-control selectpicker" data-live-search="true" reqired="required"  maxlength="256"></select>
+                            <select id="idbanco" name="idbanco" class="form-control selectpicker" data-live-search="true" maxlength="256"></select>
                           </div>  
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Tipo Pago:</label>
-                            <select class="form-control selectpicker" name="id_tpa_ven" data-live-search="true" reqired="required" id="id_tpa_ven" maxlength="256" ></select>
+                            <select id="idtipopago" name="idtipopago" class="form-control selectpicker"  data-live-search="true"   maxlength="256" ></select>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Ciudad:</label>
-                            <select class="form-control selectpicker" name="id_ciu_ven" data-live-search="true" reqired="required" id="id_ciu_ven" maxlength="256"></select>
+                            <select class="form-control selectpicker" name="id_ciu_ven" data-live-search="true" id="id_ciu_ven" maxlength="256"></select>
                           </div>
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Colaborador:</label>
-                            <select class="form-control selectpicker" name="id_col_ven" data-live-search="true" reqired="required" id="id_col_ven" maxlength="256"></select>
+                            <select class="form-control selectpicker" name="id_col_ven" data-live-search="true" id="id_col_ven" maxlength="256"></select>
                           </div>
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Cliente:</label>
-                            <select class="form-control selectpicker" name="id_cli_ven" data-live-search="true" ireqired="required" d="id_cli_ven" maxlength="256"></select>
+                            <select class="form-control selectpicker" name="id_cli_ven" data-live-search="true" d="id_cli_ven" maxlength="256"></select>
                           </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>

@@ -1,6 +1,17 @@
 <?php
+ob_start();
+session_start();
+
+if(!isset($_SESSION["usu_col"]))
+{
+header("Location:../login.php"); 
+}
+ else 
+{
+    
 require '../admin/frmHeader.php';
 ?>
+
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">        
@@ -13,6 +24,7 @@ require '../admin/frmHeader.php';
                           <h1 class="box-title">Capacitaciones <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
+                          
                     </div>
                     <!-- /.box-header -->
                     <!-- centro -->
@@ -82,7 +94,17 @@ require '../admin/frmHeader.php';
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
+  
 <?php
 require '../admin/frmFooter.php';
 ?>
   <script type="text/javascript" src="../scripts/capacitacion.js"></script>
+  <script src="../scripts/login.js" type="text/javascript"></script>
+  <?php 
+
+}
+
+ob_end_flush();
+?>
+
+  

@@ -56,7 +56,7 @@ Class Pventa{
     }
     public function select()
     {
-	$sql="SELECT * FROM tbl_punto_venta WHERE est_pdv=A";
+	$sql="SELECT * FROM tbl_punto_venta WHERE est_pdv='A'";
 	return ejecutarConsulta($sql);		
     }
 }

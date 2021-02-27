@@ -56,7 +56,7 @@ Class Banco{
     }
      public function select()
 	{
-		$sql="SELECT * FROM tbl_banco WHERE est_ban=A";
+		$sql="SELECT * FROM tbl_banco WHERE est_ban='A'";
 		return ejecutarConsulta($sql);		
 	}
 }
