@@ -1,5 +1,5 @@
 <?php
-include "frmHeader.php"
+include "../admin/frmHeader.php"
 ?>
 
 <!--Contenido-->
